@@ -13,6 +13,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.orange[300],
         body: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
@@ -65,7 +66,6 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
   Future<void> checklogin(BuildContext context) async {
     final username=usernamecontrlr.text;
     final password=passwordcontrlr.text;
@@ -83,7 +83,4 @@ class LoginScreen extends StatelessWidget {
     }
 
   }
-
-
-
 }

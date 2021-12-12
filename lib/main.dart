@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: Colors.orange[150],
       home:splashScreen(),
     );
   }
@@ -32,11 +33,7 @@ class _splashScreenState extends State<splashScreen> {
   void initState() {
 Timer(Duration(seconds: 3), (){
    checksharedpref();
-
-  // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
-  //   return LoginScreen();
-  // }));
-});
+ });
     super.initState();
   }
   @override

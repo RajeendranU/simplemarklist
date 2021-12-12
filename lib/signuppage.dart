@@ -12,67 +12,74 @@ class SignUp extends StatelessWidget {
 
 
       return Scaffold(
+        backgroundColor: Colors.greenAccent,
         body: Form(
           key: _formKey,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 100,
-              ),
-              TextFormField(
-                validator: (value){
-                  if(value==null||value.isEmpty){
-                    return 'Enter Username';
-                  }
-
-                },
-                controller: signupusernamecontrlr,
-                decoration: const InputDecoration(
-                  hintText: 'Username',
-                  border: OutlineInputBorder(),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 100,
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                validator: (value){
-                  if(value==null||value.isEmpty){
-                    return 'Enter Password';
-                  }
+                TextFormField(
+                  validator: (value){
+                    if(value==null||value.isEmpty){
+                      return 'Enter Username';
+                    }
 
-                },
-                controller: signuppasswordcontrlr,
-                decoration: const InputDecoration(
-                  hintText: 'Password',
-                  border: OutlineInputBorder(),
+                  },
+                  controller: signupusernamecontrlr,
+                  decoration: const InputDecoration(
+                    hintText: 'Username',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      if(_formKey.currentState!.validate()){
-                        savesignupdetails(context);
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  validator: (value){
+                    if(value==null||value.isEmpty){
+                      return 'Enter Password';
+                    }
 
-                      }
-                    },
-                    child: const Text('Create Account'),
+                  },
+                  controller: signuppasswordcontrlr,
+                  decoration: const InputDecoration(
+                    hintText: 'Password',
+                    border: OutlineInputBorder(),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (ctx)=>LoginScreen()));
-                    },
-                    child: const Text('Goto Login page'),
-                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      style:ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.green) ),
+                      onPressed: () {
+                        if(_formKey.currentState!.validate()){
+                          savesignupdetails(context);
+
+                        }
+                      },
+                      child: const Text('Create Account'),
+                    ),
+                    ElevatedButton(
+                      style:ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.green) ),
+
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (ctx)=>LoginScreen()));
+                      },
+                      child: const Text('Goto Login page'),
+                    ),
+                  ],
+                ),
                 ],
-              ),
-              ],
+            ),
           ),
         ),
       );
