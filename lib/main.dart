@@ -1,18 +1,26 @@
 import 'dart:async';
-
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'homescreen.dart';
 import 'loginscreen.dart';
+import 'model/studentmodel.dart';
+late  Box<StudentModel> studentDB;
 
-void main(){
+Future<void> main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final document=await getApplicationDocumentsDirectory();
+  Hive.init(document.path);
+  if(!Hive.isAdapterRegistered(1)){
+    Hive.registerAdapter(StudentModelAdapter());
+  }
+  studentDB= await Hive.openBox<StudentModel>('name');
+  //studentDB=Hive.box<StudentModel>('name');
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
-
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
